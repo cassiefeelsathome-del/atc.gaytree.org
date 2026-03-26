@@ -15,18 +15,38 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-      
-      const div = (
-        <div>
-          <button onClick= {() => (window.location.href = 'chatbot.html')}>chatbot</button>
-          
+    function Navigate(path) {
+      const [page, setPage] = React.useState(window.location.pathname);
 
+      function other(path) {
+        window.history.pushState({}, '', path);
+        setPage(path);
+      
+      return (
+      <>
+        <button 
+        onClick={() => window.location.href = 'projects/chatbot.html'}>
+        Chatbot</button>
+        <p>Paragraph of text</p>
+      </>
+    );
+    }
+    }
+
+      
+  function App() {
+    
+
+    return (
+      <div>
+        <Navigate />
       </div>
-      );
+    );
+}
 
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(div);
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
